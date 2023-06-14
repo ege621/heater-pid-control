@@ -55,7 +55,7 @@ void loop() {
   PID_value = PID_p + PID_i + PID_d;
   PID_value = map(PID_value, 0, 255, 0, 100);
   //We define PWM range between 0 and 255
-  PID_value = constrain(PID_value, 0, 90);
+  PID_value = constrain(PID_value, 0, 90); //the controller bugs if set to %100
   //Now we can write the PWM signal to the mosfet on digital pin D3
   //Since we activate the MOSFET with a 0 to the base of the BJT, we write 255-PID value (inverted)
   //  analogWrite(PWM_pin,255-PID_value);
